@@ -1,2 +1,2 @@
 # PyMLB
-A MLB.com Statistics API 
+A MLB.com Statistics API Under development 
