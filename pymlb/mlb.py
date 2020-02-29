@@ -1,3 +1,14 @@
+'''
+Written By Joon Choi aka SHUcream00(https://github.com/SHUcream00)
+Everything's under constructions for now
+
+disclaimer: I do not own the data you might get by running this script.
+
+The accounts, descriptions, data and presentation in the referring page (the "Materials") are proprietary content of MLB Advanced Media, L.P ("MLBAM").
+Only individual, non-commercial, non-bulk use of the Materials is permitted and any other use of the Materials is prohibited without prior written authorization from MLBAM.
+Authorized users of the Materials are prohibited from using the Materials in any commercial manner other than as expressly authorized by MLBAM.
+'''
+
 import requests
 from bs4 import BeautifulSoup as bs
 
@@ -7,6 +18,12 @@ class mlb():
         self.test_string = "https://www.mlb.com/dodgers/search?q={0}"
         self.suggestion = "https://suggest.mlb.com/svc/suggest/v1/min_all/{0}/99999"
         self.player_page = "https://www.mlb.com/player/{0}"
+        self.pitcher_zone = "https://baseballsavant.mlb.com/player/zone?player_id={0}&player_type=pitcher&season={1}&hfGT=R|" #player id, year
+        self.player_api = "https://statsapi.mlb.com/api/v1/people/{0}"
+        self.player_api2 = "https://statsapi.mlb.com/api/v1/people/{0}?hydrate=currentTeam,team, \
+                            stats(type=[yearByYear,yearByYearAdvanced,careerRegularSeason,careerAdvanced,availableStats](team(league)),leagueListId=mlb_hist)"
+        self.team_api = "https://statsapi.mlb.com/api/v1/teams?sportId=1&language=en&leagueListId=mlb_hist&activeStatus=B&season={0}" #year
+        self.roster_api = "https://statsapi.mlb.com/api/v1/teams/{0}/roster?hydrate=person&language=en&season={1}&rosterType=40Man" #team, year
 
     def get_player_info(self, *args, **kwargs):
 

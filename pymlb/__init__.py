@@ -11,7 +11,7 @@ Author: Joon-Won Choi https://github.com/SHUcream00
 
 Requirement:
 
-Python 3.5 or higher
+Python 3.5 or higher ==> planning to require 3.6 ++ in near future. not yet 
 BeautifulSoup4 $ pip install bs4
 lxml $ pip install lxml
 
