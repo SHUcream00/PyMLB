@@ -86,6 +86,9 @@ class mlb():
         soup = BS(t, "lxml").encode("utf-8")
         print(soup)
 
+if __init__ == "__main__":
+    actual = mlb()
+
 test = mlb()
 test.get_player_info(player = "clayton")
 #mlb.test()
