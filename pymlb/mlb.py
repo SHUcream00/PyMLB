@@ -88,7 +88,11 @@ class mlb():
 
 if __init__ == "__main__":
     actual = mlb()
+    test.get_player_info(player = "clayton")
 
+    
 test = mlb()
 test.get_player_info(player = "clayton")
+
+
 #mlb.test()
