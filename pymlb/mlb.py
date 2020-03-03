@@ -38,12 +38,15 @@ class mlb():
                 raw_text = requests.get(self.player_page.format(cands[0][1])).text
                 soup = bs(raw_text, 'lxml')
                 player_img = soup.find(alt=cands[0][0])['src']
-                player_bio = soup.find(class='player-bio')
+                #player_bio = soup.find(class='player-bio')
                 print(player_bio)
-
 
             else:
                 #ask user to select one player
+                cands_2 = [i[0] for i in cands]
+                print("Hey, I found these guys, which one do you want? {0}".format(cands_2))
+                answer_2 = input("Choose One...")
+
                 pass
 
             return r
@@ -71,5 +74,5 @@ class mlb():
         print(soup)
 
 test = mlb()
-test.get_player_info(player = "clayton kershaw")
+test.get_player_info(player = "clayton")
 #mlb.test()
