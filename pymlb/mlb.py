@@ -34,20 +34,25 @@ class mlb():
             cands = list(map(lambda x: (x.split('|')[8], x.split('|')[9]), r.json()['suggestions']))
             print(cands, len(cands), cands[0][1])
 
-            if len(cands) == 1:
-                raw_text = requests.get(self.player_page.format(cands[0][1])).text
-                soup = bs(raw_text, 'lxml')
-                player_img = soup.find(alt=cands[0][0])['src']
-                #player_bio = soup.find(class='player-bio')
-                print(player_bio)
 
+            #Player selection part
+            #If there's just one automatically go for it
+            if len(cands) == 1: raw_text = requests.get(self.player_page.format(cands[0][1])).text
             else:
-                #ask user to select one player
+                #Need to get user input via input()
                 cands_2 = [i[0] for i in cands]
                 print("Hey, I found these guys, which one do you want? {0}".format(cands_2))
                 answer_2 = input("Choose One...")
 
-                pass
+
+            soup = bs(raw_text, 'lxml')
+            ##player search part can be changed so that
+            player_img = soup.find(alt=cands[0][0])['src']
+            #player_bio = soup.find(class='player-bio')
+            print(player_bio)
+
+
+
 
             return r
 
