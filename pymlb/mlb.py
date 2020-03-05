@@ -43,13 +43,13 @@ class mlb():
                 cands_2 = [i[0] for i in cands]
                 print("Hey, I found these guys, which one do you want? {0}".format(cands_2))
                 answer_2 = input("Choose One...")
+                if answer_2 not in cands_2: raise Exception
 
 
             soup = bs(raw_text, 'lxml')
             ##player search part can be changed so that
             player_img = soup.find(alt=cands[0][0])['src']
-            #player_bio = soup.find(class='player-bio')
-            print(player_bio)
+            #basic info
 
 
 
