@@ -9,6 +9,12 @@ Only individual, non-commercial, non-bulk use of the Materials is permitted and 
 Authorized users of the Materials are prohibited from using the Materials in any commercial manner other than as expressly authorized by MLBAM.
 '''
 
+def tester(f):
+    def wraps(*args, **kwargs):
+        print("Calling function {0}".format(f.__name__))
+        return args
+    return wraps
+
 import requests
 from bs4 import BeautifulSoup as bs
 
@@ -25,6 +31,7 @@ class mlb():
         self.team_api = "https://statsapi.mlb.com/api/v1/teams?sportId=1&language=en&leagueListId=mlb_hist&activeStatus=B&season={0}" #year
         self.roster_api = "https://statsapi.mlb.com/api/v1/teams/{0}/roster?hydrate=person&language=en&season={1}&rosterType=40Man" #team, year
 
+    @tester
     def get_player_info(self, *args, **kwargs):
 
         #Get a player's personal information from MLB.com
@@ -51,9 +58,6 @@ class mlb():
             player_img = soup.find(alt=cands[0][0])['src']
             #basic info
 
-
-
-
             return r
 
         except Exception as error:
@@ -65,13 +69,17 @@ class mlb():
         pass
 
     def get_game_info(*arg, **kwargs):
+        #gameday API?
         pass
 
     def get_future_schedule(*arg, **kwargs):
+        #schedules page
         pass
 
     def get_standings(*args, **kwargs):
+        #standings page
         pass
+
     def test():
         r = requests.get("https://www.mlb.com/player/mike-trout-545361")
         t = r.text
