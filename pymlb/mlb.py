@@ -12,8 +12,8 @@ Authorized users of the Materials are prohibited from using the Materials in any
 def tester(f):
     def wraps(*args, **kwargs):
         print("Calling function {0}".format(f.__name__))
-        return args
-    return wraps
+    wraps(f)
+    return f
 
 import requests
 from bs4 import BeautifulSoup as bs
@@ -48,7 +48,7 @@ class mlb():
             else:
                 #Need to get user input via input()
                 cands_2 = [i[0] for i in cands]
-                print("Hey, I found these guys, which one do you want? {0}".format(cands_2))
+                print("Hey, I found these guys, which one do you want? {0}\n".format(cands_2))
                 answer_2 = input("Choose One...")
                 if answer_2 not in cands_2: raise Exception
 
@@ -86,11 +86,11 @@ class mlb():
         soup = BS(t, "lxml").encode("utf-8")
         print(soup)
 
-if __init__ == "__main__":
+if __name__ == "__main__":
     actual = mlb()
-    test.get_player_info(player = "clayton")
+    actual.get_player_info(player = "clayton")
 
-    
+
 test = mlb()
 test.get_player_info(player = "clayton")
 
