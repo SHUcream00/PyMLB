@@ -1,19 +1,9 @@
 '''
-Written By Joon Choi aka SHUcream00(https://github.com/SHUcream00)
+Written By SHUcream00(https://github.com/SHUcream00)
 Everything's under constructions for now
 
-disclaimer: I do not own the data you might get by running this script.
-
-The accounts, descriptions, data and presentation in the referring page (the "Materials") are proprietary content of MLB Advanced Media, L.P ("MLBAM").
-Only individual, non-commercial, non-bulk use of the Materials is permitted and any other use of the Materials is prohibited without prior written authorization from MLBAM.
-Authorized users of the Materials are prohibited from using the Materials in any commercial manner other than as expressly authorized by MLBAM.
+disclaimer: I do not own the data you might get by running this script. Check MLB Advanced Media, L.P's copyright
 '''
-
-def tester(f):
-    def wraps(*args, **kwargs):
-        print("Calling function {0}".format(f.__name__))
-    wraps(f)
-    return f
 
 import requests
 from bs4 import BeautifulSoup as bs
@@ -31,13 +21,13 @@ class mlb():
         self.team_api = "https://statsapi.mlb.com/api/v1/teams?sportId=1&language=en&leagueListId=mlb_hist&activeStatus=B&season={0}" #year
         self.roster_api = "https://statsapi.mlb.com/api/v1/teams/{0}/roster?hydrate=person&language=en&season={1}&rosterType=40Man" #team, year
 
-    @tester
     def get_player_info(self, *args, **kwargs):
 
         #Get a player's personal information from MLB.com
         player_string = kwargs['player'].replace(chr(32), '%20')
         try:
             r = requests.get(self.suggestion.format(player_string))
+            print(r, type(r))
             cands = list(map(lambda x: (x.split('|')[8], x.split('|')[1], x.split('|')[9]), r.json()['suggestions']))
             print(cands, len(cands), cands[0][2])
 
@@ -100,7 +90,7 @@ class mlb():
 
 if __name__ == "__main__":
     actual = mlb()
-    actual.get_player_info(player = "clayton kershaw")
+    actual.get_player_info(player = "blah blah")
 
 
 #test = mlb()
