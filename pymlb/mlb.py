@@ -78,7 +78,7 @@ class mlb():
         #schedules page
         pass
 
-    def getstandings(*args, **kwargs):
+    def getstanding(*args, **kwargs):
         #standings page
         pass
 
